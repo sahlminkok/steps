@@ -11,16 +11,18 @@ function App() {
   const [isOpen, setIsOpen] = useState(true);
 
   const handleNext = () => {
-    if (step < 3) setStep(step + 1);
+    if (step < 3) setStep((step) => step + 1);
   };
 
   const handlePrevious = () => {
-    if (step > 1) setStep(step - 1);
+    if (step > 1) setStep((step) => step - 1);
   };
 
   return (
     <>
-      <button className="close" onClick={()=>setIsOpen(!isOpen)}>&times;</button>
+      <button className="close" onClick={() => setIsOpen((isOpen) => !isOpen)}>
+        &times;
+      </button>
 
       {isOpen && (
         <div className="steps">
@@ -36,14 +38,18 @@ function App() {
 
           <div className="buttons">
             <button
-              style={step > 1 ? { backgroundColor: "#7950f2", color: "#fff" } : {}}
+              style={
+                step > 1 ? { backgroundColor: "#7950f2", color: "#fff" } : {}
+              }
               onClick={handlePrevious}
               disabled={step <= 1}
             >
               Previous
             </button>
             <button
-              style={step < 3 ? { backgroundColor: "#7950f2", color: "#fff" } : {}}
+              style={
+                step < 3 ? { backgroundColor: "#7950f2", color: "#fff" } : {}
+              }
               onClick={handleNext}
               disabled={step >= 3}
             >
